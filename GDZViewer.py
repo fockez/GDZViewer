@@ -24,7 +24,7 @@ class PlayThread( threading.Thread ):
         self.canvas = canvas
 
     def run( self ):
-        fitslist = glob.glob( "/Users/fockez/Desktop/118/*.fits" )
+        fitslist = glob.glob( r"D:\tmp\20160614\118-nf\*.fits" )
 
         for f in fitslist:
             t = time.time()
