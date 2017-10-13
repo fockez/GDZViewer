@@ -14,9 +14,14 @@ import time
 import glob
 import sys
 import threading
+import configparser
 
 from PyQt5 import QtWidgets
 from mainwindow import Ui_MainWindow
+
+conf = configparser.ConfigParser()
+conf.read( 'defaults.conf' )
+
 
 class PlayThread( threading.Thread ):
     def __init__( self, canvas ):
@@ -60,6 +65,15 @@ class GDZViewer( QtWidgets.QMainWindow, Ui_MainWindow ):
         self.mpl_toolbar = NavigationToolbar( self.mc, self.verticalFrame )
         self.verticalLayout_3.addWidget( self.mc )
         self.verticalLayout_3.addWidget( self.mpl_toolbar )
+
+        button_names = []
+        for key in conf['BUTTONS']: button_names.append( key )
+        button_positions = [( j, i ) for j in range( int( len( button_names ) / 4 + 1 ) ) for i in range( 4 ) ]
+        for button_position, button_name in zip( button_positions, button_names ):
+            button = QtWidgets.QPushButton( button_name )
+            button.setText( button_name[7:] )
+            self.gridLayout_3.addWidget( button, *button_position )
+
 
     def Play( self ):
         self.t = PlayThread( self.mc )
