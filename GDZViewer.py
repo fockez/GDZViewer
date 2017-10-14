@@ -70,8 +70,10 @@ class GDZViewer( QtWidgets.QMainWindow, Ui_MainWindow ):
         for key in conf['BUTTONS']: button_names.append( key )
         button_positions = [( j, i ) for j in range( int( len( button_names ) / 4 + 1 ) ) for i in range( 4 ) ]
         for button_position, button_name in zip( button_positions, button_names ):
-            button = QtWidgets.QPushButton( button_name )
+            button = QtWidgets.QPushButton()
+            button.setObjectName( button_name )
             button.setText( button_name[7:] )
+            button.clicked.connect( self.Switch_unit )
             self.gridLayout_3.addWidget( button, *button_position )
 
 
@@ -84,6 +86,9 @@ class GDZViewer( QtWidgets.QMainWindow, Ui_MainWindow ):
 
     def Stop( self ):
         print( self.t.is_alive() )
+
+    def Switch_unit( self ):
+        print( self.sender().objectName() )
 
 app = QtWidgets.QApplication( sys.argv )
 window = GDZViewer()

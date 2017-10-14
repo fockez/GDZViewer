@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>800</height>
+    <width>2000</width>
+    <height>1600</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>GDZViewer</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="4,1">
     <item>
      <widget class="QFrame" name="verticalFrame">
       <property name="sizePolicy">
@@ -32,22 +32,10 @@
     </item>
     <item>
      <widget class="QTabWidget" name="tabWidget">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
       <property name="minimumSize">
        <size>
         <width>300</width>
         <height>0</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>300</width>
-        <height>16777215</height>
        </size>
       </property>
       <property name="currentIndex">
@@ -59,7 +47,7 @@
        </attribute>
        <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="0">
-         <layout class="QVBoxLayout" name="verticalLayout_4">
+         <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,0,1,1">
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="3,1,1">
             <item>
@@ -71,10 +59,10 @@
             </item>
             <item>
              <widget class="QPushButton" name="pushButton_6">
-              <property name="maximumSize">
+              <property name="minimumSize">
                <size>
                 <width>50</width>
-                <height>16777215</height>
+                <height>0</height>
                </size>
               </property>
               <property name="text">
@@ -84,10 +72,10 @@
             </item>
             <item>
              <widget class="QPushButton" name="pushButton_5">
-              <property name="maximumSize">
+              <property name="minimumSize">
                <size>
                 <width>50</width>
-                <height>16777215</height>
+                <height>0</height>
                </size>
               </property>
               <property name="text">
@@ -99,6 +87,9 @@
           </item>
           <item>
            <layout class="QGridLayout" name="gridLayout_3"/>
+          </item>
+          <item>
+           <widget class="QTextBrowser" name="textBrowser"/>
           </item>
           <item>
            <widget class="QListWidget" name="listWidget"/>
@@ -159,7 +150,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1000</width>
+     <width>2000</width>
      <height>17</height>
     </rect>
    </property>
