@@ -18,6 +18,7 @@ import configparser
 
 from PyQt5 import QtWidgets
 from mainwindow import Ui_MainWindow
+from manframe import Ui_Frame
 
 conf = configparser.ConfigParser()
 conf.read( 'defaults.conf' )
@@ -57,6 +58,11 @@ class MplCanvas( FigureCanvas ):
 
         self.img = self.axes.imshow( np.zeros( ( 100, 100 ) ), cmap = 'gray', origin = 'lower' )
 
+class TMFrame( QtWidgets.QFrame, Ui_Frame ):
+    def __init__( self ):
+        super( TMFrame, self ).__init__()
+        self.setupUi( self )
+
 class GDZViewer( QtWidgets.QMainWindow, Ui_MainWindow ):
     def __init__( self ):
         super( GDZViewer, self ).__init__()
@@ -67,6 +73,8 @@ class GDZViewer( QtWidgets.QMainWindow, Ui_MainWindow ):
         self.verticalLayout_3.addWidget( self.mpl_toolbar )
 
         button_names = []
+        self.hosts = {}
+        self.mainpaths = {}
         for key in conf['BUTTONS']: button_names.append( key )
         button_positions = [( j, i ) for j in range( int( len( button_names ) / 4 + 1 ) ) for i in range( 4 ) ]
         for button_position, button_name in zip( button_positions, button_names ):
@@ -75,7 +83,7 @@ class GDZViewer( QtWidgets.QMainWindow, Ui_MainWindow ):
             button.setText( button_name[7:] )
             button.clicked.connect( self.Switch_unit )
             self.gridLayout_3.addWidget( button, *button_position )
-
+            self.mainpaths[button_name], self.hosts[button_name] = conf['BUTTONS'][button_name].split('@')
 
     def Play( self ):
         self.t = PlayThread( self.mc )
@@ -89,6 +97,10 @@ class GDZViewer( QtWidgets.QMainWindow, Ui_MainWindow ):
 
     def Switch_unit( self ):
         print( self.sender().objectName() )
+
+    def Tel_Management( self ):
+        self.tmframe = TMFrame()
+        self.tmframe.show()
 
 app = QtWidgets.QApplication( sys.argv )
 window = GDZViewer()
