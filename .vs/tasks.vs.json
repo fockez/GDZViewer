@@ -10,6 +10,11 @@
       "taskName": "任务-GDZViewer",
       "appliesTo": "GDZViewer.py",
       "type": "launch"
+    },
+    {
+      "taskName": "任务-GDZViewer",
+      "appliesTo": "GDZViewer.spec",
+      "type": "launch"
     }
   ]
 }
