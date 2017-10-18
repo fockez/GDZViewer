@@ -4,10 +4,10 @@ block_cipher = None
 
 
 a = Analysis(['GDZViewer.py'],
-             pathex=['C:\\Users\\Fox\\source\\repos\\GDZViewer'],
+             pathex=['D:\FOX\Source\repos\GDZViewer'],
              binaries=[],
              datas=[],
-             hiddenimports=['astropy.extern.bundle.six'],
+             hiddenimports=[],
              hookspath=[],
              runtime_hooks=[],
              excludes=[],
@@ -22,12 +22,13 @@ exe = EXE(pyz,
           name='GDZViewer',
           debug=False,
           strip=False,
-          upx=True,
+          upx=False,
           console=True )
 coll = COLLECT(exe,
                a.binaries,
                a.zipfiles,
                a.datas,
                strip=False,
-               upx=True,
+               upx=False,
                name='GDZViewer')
+#'Tkinter','_tkinter','tkinter','tcl','tk','babel','sphinx','wx','zmq','IPython'

@@ -1,4 +1,19 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*- 
+
+import inspect
+import re, sys
+import os
+if hasattr( sys, "frozen" ):
+    sys.path.insert( -1, os.path.join( os.path.dirname( sys.executable ), "astropy" ) )
+    old_getabsfile = inspect.getabsfile
+    def inspect_getabsfile_wrapper( *args, **kwargs ):
+        path = old_getabsfile( *args, **kwargs )
+        last_part = re.sub( "(.*?yportsa).*", r"\1", path[::-1] )[::-1]
+        if os.path.splitext( last_part )[1] == '.py':
+            last_part = os.path.splitext( last_part )[0] + '.pyc'
+        return os.path.join( os.path.dirname( sys.executable ), last_part ).lower()
+    inspect.getabsfile = inspect_getabsfile_wrapper
 
 import matplotlib
 matplotlib.use( "Qt5Agg" )
@@ -23,7 +38,7 @@ from manframe import Ui_Frame
 conf = configparser.ConfigParser()
 conf.read( 'defaults.conf' )
 
-
+"""
 class PlayThread( threading.Thread ):
     def __init__( self, canvas ):
         threading.Thread.__init__( self )
@@ -42,7 +57,7 @@ class PlayThread( threading.Thread ):
             self.canvas.fig.canvas.update()
             self.canvas.fig.canvas.flush_events()
             print( time.time() - t )
-
+"""
 class MplCanvas( FigureCanvas ):
     def __init__( self, parent = None ):
         self.fig = Figure( figsize = ( 5, 5 ), dpi = 100, tight_layout = True )
@@ -86,14 +101,16 @@ class GDZViewer( QtWidgets.QMainWindow, Ui_MainWindow ):
             self.mainpaths[button_name], self.hosts[button_name] = conf['BUTTONS'][button_name].split('@')
 
     def Play( self ):
-        self.t = PlayThread( self.mc )
-        self.t.start()
+        #self.t = PlayThread( self.mc )
+        #self.t.start()
         #img = self.mc.axes.imshow( fits.getdata( "/Users/fockez/Desktop/T150_20161111210140_20001.c.fits" ) )
         #print( type( img ) )
         #self.mc.fig.canvas.draw()
+        pass
 
     def Stop( self ):
-        print( self.t.is_alive() )
+        #print( self.t.is_alive() )
+        pass
 
     def Switch_unit( self ):
         print( self.sender().objectName() )
