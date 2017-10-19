@@ -163,7 +163,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setStretch(0, 4)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 2000, 17))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 2000, 21))
         self.menubar.setNativeMenuBar(False)
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
@@ -218,8 +218,9 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
         self.actionTel_Management.triggered.connect(MainWindow.Tel_Management)
+        self.pushButton_4.clicked.connect(MainWindow.Play)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

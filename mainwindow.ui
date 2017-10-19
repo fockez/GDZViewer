@@ -39,7 +39,7 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -268,7 +268,7 @@
      <x>0</x>
      <y>0</y>
      <width>2000</width>
-     <height>17</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="nativeMenuBar">
@@ -384,6 +384,22 @@
     <hint type="destinationlabel">
      <x>999</x>
      <y>799</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_4</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>Play()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1721</x>
+     <y>74</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1858</x>
+     <y>26</y>
     </hint>
    </hints>
   </connection>

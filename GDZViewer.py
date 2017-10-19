@@ -38,7 +38,6 @@ from manframe import Ui_Frame
 conf = configparser.ConfigParser()
 conf.read( 'defaults.conf' )
 
-"""
 class PlayThread( threading.Thread ):
     def __init__( self, canvas ):
         threading.Thread.__init__( self )
@@ -57,7 +56,7 @@ class PlayThread( threading.Thread ):
             self.canvas.fig.canvas.update()
             self.canvas.fig.canvas.flush_events()
             print( time.time() - t )
-"""
+
 class MplCanvas( FigureCanvas ):
     def __init__( self, parent = None ):
         self.fig = Figure( figsize = ( 5, 5 ), dpi = 100, tight_layout = True )
@@ -76,7 +75,7 @@ class MplCanvas( FigureCanvas ):
 class TMFrame( QtWidgets.QFrame, Ui_Frame ):
     def __init__( self ):
         super( TMFrame, self ).__init__()
-        self.setupUi( self )
+        elf.setupUi( self )
 
 class GDZViewer( QtWidgets.QMainWindow, Ui_MainWindow ):
     def __init__( self ):
@@ -101,12 +100,12 @@ class GDZViewer( QtWidgets.QMainWindow, Ui_MainWindow ):
             self.mainpaths[button_name], self.hosts[button_name] = conf['BUTTONS'][button_name].split('@')
 
     def Play( self ):
-        #self.t = PlayThread( self.mc )
-        #self.t.start()
+        self.t = PlayThread( self.mc )
+        self.t.start()
         #img = self.mc.axes.imshow( fits.getdata( "/Users/fockez/Desktop/T150_20161111210140_20001.c.fits" ) )
         #print( type( img ) )
         #self.mc.fig.canvas.draw()
-        pass
+        #pass
 
     def Stop( self ):
         #print( self.t.is_alive() )
